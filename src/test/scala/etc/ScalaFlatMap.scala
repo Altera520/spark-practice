@@ -1,9 +1,10 @@
 package etc
 
+import common.CommonSpark
 import org.apache.commons.lang3.StringUtils
 import org.scalatest.funsuite.AnyFunSuite
 
-class ScalaFlatMap extends AnyFunSuite{
+class ScalaFlatMap extends AnyFunSuite {
     test("scala_map_test") {
         val ls = List("taewon 45", "minsu 6", "sunny 40")
 

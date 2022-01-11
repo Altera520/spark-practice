@@ -37,6 +37,11 @@ class SparkFlatMap extends AnyFunSuite {
             (4, "a", "2018-01-04", "2018-01-06")
         ).toDF("ticket_id", "user_id", "start_date", "end_date")
 
-
+        spark
+          .read
+          .format("parquet")
+          .load("/Users/angyojun/Desktop/maasbibig/dataset/maasbi_big_data/dm_cs_op_anl_dd_sm")
+          .orderBy($"p_crtn_dt".desc)
+          .show()
     }
 }

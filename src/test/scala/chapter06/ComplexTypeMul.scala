@@ -2,7 +2,7 @@ package chapter06
 
 import common.{CommonSpark, CommonUtil}
 import org.apache.spark.sql.functions
-import org.apache.spark.sql.functions.{array_contains, col, explode, split, struct}
+import org.apache.spark.sql.functions._
 import org.scalatest.funsuite.AnyFunSuite
 
 class ComplexTypeMul extends AnyFunSuite{
@@ -125,5 +125,22 @@ class ComplexTypeMul extends AnyFunSuite{
         |RED FLOCK LOVE HEART PHOTO FRAME|562127|
         +--------------------------------+------+
         */
+    }
+
+    test("string_array_explode") {
+        val spark = CommonSpark.createLocalSparkSession("test")
+        import spark.implicits._
+        val df = Seq(
+            (
+              """
+                |{"dtc": "1g1c;2g2c;3g3c"}
+                |""".stripMargin)
+        ).toDF("payload")
+        df.show(false)
+
+        df.withColumn(
+            "dtc_raw", get_json_object(col("payload"), "$.dtc"))
+          .withColumn("dtc", explode(split($"dtc_raw", ";")))
+          .show(false)
     }
 }

@@ -33,7 +33,7 @@ class JsonMul extends AnyFunSuite{
             // get_json_object 함수를 통해 JSON 문자열을 조회가능
             get_json_object(col("jsonString"), "$.myJsonKey.myJsonValue[1]") as "column",
             // 중첩이 없는 단일 수준의 JSON이라면 json_tuple을 사용하여 조회 가능
-            json_tuple(col("jsonString"), "myJsonKey")
+            json_tuple(col("jsonString"), "myJsonKey"),
         ).show(2, false)
         /*
         +------+-----------------------+
