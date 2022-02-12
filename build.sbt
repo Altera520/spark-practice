@@ -11,3 +11,5 @@ libraryDependencies += "org.apache.spark" %% "spark-sql" % sparkVersion % "provi
 libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.4"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.9" % "test"
 libraryDependencies += "com.typesafe" % "config" % "1.4.1"
+
+libraryDependencies += "org.apache.spark" %% "spark-sql-kafka-0-10" % "3.1.2" % Test
